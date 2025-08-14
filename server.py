@@ -16,7 +16,7 @@ class LLM:
             scope="GIGACHAT_API_PERS",
             model="GigaChat-2",
             verify_ssl_certs=False,
-            temperature=0.5  # Для более детерминированных ответов
+            temperature=0.5
         )
         
     def generate(self, prompt: str) -> str:
@@ -40,7 +40,7 @@ class VectorStore:
         embeddings = self.model.encode(texts, show_progress_bar=True)
         self.db = FAISS.from_embeddings(
             text_embeddings=list(zip(texts, embeddings)),
-            embedding=self.model,  # Исправлено: передаем саму модель
+            embedding=self.model, 
             metadatas=metadatas
         )
         self.metadata = metadatas
